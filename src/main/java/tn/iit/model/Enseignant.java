@@ -1,6 +1,7 @@
 package tn.iit.model;
 
 public class Enseignant {
+    private int id;
     private String nom = "";
     private String prenom = "";
 
@@ -21,6 +22,14 @@ public class Enseignant {
     @Override
     public String toString() {
         return "Enseignant [nom=" + nom + ", prenom=" + prenom + "]";
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNom() {
