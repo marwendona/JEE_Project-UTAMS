@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Ajouter Enseignant</title>
+	<title>Ajouter Autorisation</title>
 	<!-- Inclure les fichiers CSS de Bootstrap -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 		  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
@@ -14,30 +14,21 @@
 </head>
 <body>
 
-<jsp:useBean id="enseignant" class="tn.iit.model.Enseignant" scope="session"></jsp:useBean>
-<div class="container">
+<div>
 	<br>
 	<br>
-	<a href="index.jsp" class="btn btn-secondary">Retour</a>
+	<a href="autorisation.jsp" class="btn btn-secondary">Retour</a>
+</div>
 
-	<h1>Ajouter Enseignant</h1>
 
-	<form method="post" action="verif.jsp">
+<div class="container mt-4">
+	<form method="post" action="AjouteeAutorisationController">
 		<div class="form-group">
-			<label for="nom">Nom :</label>
-			<input type="text" class="form-control" name="nom" id="nom" value='${enseignant.nom }' required>
+			<label for="nbHeurSemaine"><strong>Nombre d'heures par semaine :</strong></label>
+			<input type="number" class="form-control" name="nbHeurSemaine" id="nbHeurSemaine" min="1" max="${y}" required>
 		</div>
-		<div class="form-group">
-			<label for="prenom">Prenom :</label>
-			<input type="text" class="form-control" name="prenom" id="prenom" value='${enseignant.prenom }' required>
-		</div>
-		<div class="form-group">
-			<label for="institut">Institut :</label>
-			<input type="text" class="form-control" name="institut" id="institut" value='${enseignant.institut }' required>
-		</div>
-		<button type="submit" class="btn btn-primary btn-block">Valider</button>
+		<button type="submit" class="btn btn-primary btn-block mt-3">Valider</button>
 	</form>
-
 </div>
 
 <!-- Inclure les fichiers JavaScript de Bootstrap -->

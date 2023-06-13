@@ -22,39 +22,41 @@ import tn.iit.model.Enseignant;
 @WebServlet("/Delete")
 public class DeleteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public DeleteController() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public DeleteController() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 
 		ServletContext application = getServletContext();
 		ArrayList<Enseignant> tEnseignant = (ArrayList<Enseignant>) application.getAttribute("tEnseignant");
 
-		int id = Integer.parseInt(request.getParameter("id"));
+		int idens = Integer.parseInt(request.getParameter("idens"));
 
 		//Enseignant enseignant = tEnseignant.get(pos);
-		
-	
+
+
 		//tEnseignant.remove(pos);
-		EnseignantDao.delete(id);
-		
+		EnseignantDao.delete(idens);
+
 		ArrayList<Enseignant> l=EnseignantDao.getAllEnseignan();
 		System.out.println("liste de la BD "+l.toString());
 		application.setAttribute("tEnseignant", l);
 		//application.setAttribute("tEnseignant", tEnseignant);
-		
+
+		request.setAttribute("id", -1);
+
 		response.sendRedirect("index.jsp");
-		
+
 	}
 
 	/**

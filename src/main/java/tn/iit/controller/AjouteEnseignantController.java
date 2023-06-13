@@ -22,10 +22,10 @@ import tn.iit.model.Enseignant;
 @WebServlet("/AjouteEnseignantController")
 public class AjouteEnseignantController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
- 
+
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+
 		doPost(request, response);
 	}
 
@@ -33,45 +33,45 @@ public class AjouteEnseignantController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-		
+
 		RequestDispatcher rdIndex = getServletContext().getRequestDispatcher("/index.jsp");
 		RequestDispatcher rdEns = getServletContext().getRequestDispatcher("/EnseignantController");
 		ServletContext application = getServletContext();
-		
+
 
 		HttpSession session = request.getSession();
 		Enseignant e = (Enseignant) session.getAttribute("enseignant");
-		
+
 		System.out.println("enseignant  de la session e"+e.toString());
-		
-//--------------------------
-		ArrayList<Enseignant> l=EnseignantDao.getAllEnseignan();
-		System.out.println("liste de la BD "+l.toString());
-		application.setAttribute("tEnseignant", l);
-//---------------------------------		
-	
+
+		EnseignantDao.save(e);
+
+
 		ArrayList<Enseignant> tEnseignant = (ArrayList<Enseignant>) application.getAttribute("tEnseignant");
 		if (tEnseignant == null) { // pour le premier appel
 			tEnseignant = new ArrayList<>();
 		}
-		//System.out.println("ListEnseignant 9bal ma zed"+ListEnseignant.toString());
-		//tEnseignant.add(e);
 
-		System.out.println("ListEnseignant ba3d ma zed"+tEnseignant.toString());
-		
-		application.setAttribute("tEnseignant", tEnseignant); // cle valeur
-		EnseignantDao.save(e);
-		
+
+		System.out.println("ListEnseignant 9bal ma zed"+tEnseignant.toString());
+
+		tEnseignant=EnseignantDao.getAllEnseignan();
+		application.setAttribute("tEnseignant", tEnseignant);
+
 		String a = application.getAttribute("tEnseignant").toString();
 		System.out.println("application ListEnseignant"+a);
-        //---------------------------
-		session.invalidate();
-		
-		
+		//---------------------------
+		//session.invalidate();
+
+
+		request.setAttribute("enseignant", "");
+
 		rdIndex.forward(request, response);
-		
-			
-		
+
+
 	}
+
+
+
 
 }

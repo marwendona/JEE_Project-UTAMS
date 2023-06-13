@@ -21,7 +21,7 @@ import tn.iit.model.Enseignant;
 @WebServlet("/EnseignantController")
 public class EnseignantController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -38,13 +38,13 @@ public class EnseignantController extends HttpServlet {
 		ServletContext application = getServletContext();
 		ArrayList<Enseignant> tUser = (ArrayList<Enseignant>) application.getAttribute("ListEnseignant");
 		*/
-		
-		
-		
-		
+
+
+
+
 		//rdIndex.forward(request, response);
-		
-		
+
+
 	}
 
 }

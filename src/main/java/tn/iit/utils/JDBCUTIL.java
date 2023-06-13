@@ -12,7 +12,7 @@ public class JDBCUTIL {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection ctx=DriverManager.getConnection("jdbc:mysql://localhost:3306/enseignantdb","root","root123");
 			stmt=ctx.createStatement();
-			
+
 		}catch(ClassNotFoundException|SQLException e) {
 			e.printStackTrace();
 		}
